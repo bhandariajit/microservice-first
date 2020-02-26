@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.citi.order.domain.Item;
 
-@FeignClient("ITEMSERVICE")
-@RibbonClient("ITEMSERVICE")
+@FeignClient(name = "ZuulApiGateway")
+@RibbonClient(name = "itemService")
 public interface ItemProxy {
 
-	@GetMapping("/item/{code}")
+	@GetMapping("/itemService/item/{code}")
 	public Item getItemDetails(@PathVariable("code") int code);
 	
 	//method name can be anything. url should match..
